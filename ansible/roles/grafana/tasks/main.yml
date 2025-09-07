@@ -1,4 +1,7 @@
 ---
+- name: Load Grafana secrets from Vault
+  ansible.builtin.include_vars:
+    file: "{{ role_path }}/vars/vault.yml"
+
 - import_tasks: install.yml
 - import_tasks: configure.yml
-
