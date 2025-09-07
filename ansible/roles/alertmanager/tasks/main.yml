@@ -1,5 +1,8 @@
 ---
-# Install and configure Alertmanager
+
+- name: Load alertmanager secrets from Vault
+  ansible.builtin.include_vars:
+    file: "{{ role_path }}/vars/vault.yml"
 
 - name: Download Alertmanager tarball
   get_url:
