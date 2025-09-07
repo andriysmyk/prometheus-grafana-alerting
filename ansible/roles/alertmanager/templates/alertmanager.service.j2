@@ -1,0 +1,17 @@
+[Unit]
+Description=Prometheus Alertmanager
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=alertmanager
+Group=alertmanager
+Type=simple
+ExecStart=/usr/local/bin/alertmanager-0.28.1.linux-amd64/alertmanager \
+  --config.file=/etc/alertmanager/alertmanager.yml \
+  --storage.path=/var/lib/alertmanager
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

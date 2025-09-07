@@ -1,0 +1,14 @@
+[Unit]
+Description=Grafana
+After=network.target
+
+[Service]
+User=grafana
+Group=grafana
+Type=simple
+ExecStart=/usr/local/bin/grafana-server \
+  --homepath=/usr/local/bin/grafana-v10.2.3
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

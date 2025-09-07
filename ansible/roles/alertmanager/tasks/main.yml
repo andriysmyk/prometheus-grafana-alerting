@@ -1,0 +1,66 @@
+---
+# Install and configure Alertmanager
+
+- name: Download Alertmanager tarball
+  get_url:
+    url: "https://github.com/prometheus/alertmanager/releases/download/v0.28.1/alertmanager-0.28.1.linux-amd64.tar.gz"
+    dest: /tmp/alertmanager.tar.gz
+    mode: '0644'
+  tags: alertmanager
+
+- name: Extract Alertmanager tarball
+  unarchive:
+    src: /tmp/alertmanager.tar.gz
+    dest: /usr/local/bin/
+    remote_src: yes
+  tags: alertmanager
+
+- name: Create alertmanager user
+  user:
+    name: alertmanager
+    shell: /usr/sbin/nologin
+    system: yes
+    create_home: no
+  tags: alertmanager
+
+- name: Create Alertmanager config directory
+  file:
+    path: /etc/alertmanager
+    state: directory
+    owner: alertmanager
+    group: alertmanager
+    mode: '0755'
+  tags: alertmanager
+
+- name: Copy Alertmanager configuration
+  template:
+    src: alertmanager.yml.j2
+    dest: /etc/alertmanager/alertmanager.yml
+    owner: alertmanager
+    group: alertmanager
+    mode: '0644'
+  tags: alertmanager
+
+- name: Copy Alertmanager systemd service
+  template:
+    src: alertmanager.service.j2
+    dest: /etc/systemd/system/alertmanager.service
+    owner: root
+    group: root
+    mode: '0644'
+  tags: alertmanager
+  notify:
+    - Reload systemd
+    - Restart Alertmanager
+
+- name: Reload systemd
+  systemd:
+    daemon_reload: yes
+  tags: alertmanager
+
+- name: Enable and start Alertmanager service
+  systemd:
+    name: alertmanager
+    enabled: yes
+    state: started
+  tags: alertmanager

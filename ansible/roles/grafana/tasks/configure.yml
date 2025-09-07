@@ -1,0 +1,50 @@
+- name: Wait for Grafana API to be ready
+  ansible.builtin.uri:
+    url: "http://localhost:{{ grafana_port }}/api/health"
+    user: "{{ grafana_user }}"
+    password: "{{ grafana_password }}"
+    status_code: 200
+    validate_certs: no
+  register: grafana_health
+  until: grafana_health.status == 200
+  retries: 10
+  delay: 5
+  tags: grafana-config
+
+- name: Add Prometheus datasource
+  community.grafana.grafana_datasource:
+    name: "Prometheus"
+    grafana_url: "http://localhost:{{ grafana_port }}"
+    grafana_user: "{{ grafana_user }}"
+    grafana_password: "{{ grafana_password }}"
+    ds_type: "prometheus"
+    ds_url: "http://localhost:9090"
+    access: "proxy"
+    is_default: true
+  tags: grafana-config
+
+- name: Add Alertmanager datasource
+  community.grafana.grafana_datasource:
+    name: "Alertmanager"
+    grafana_url: "http://localhost:{{ grafana_port }}"
+    grafana_user: "{{ grafana_user }}"
+    grafana_password: "{{ grafana_password }}"
+    ds_type: "alertmanager"
+    ds_url: "http://localhost:9093"
+    access: "proxy"
+  tags: grafana-config
+
+- name: Copy Node Exporter dashboard to host
+  copy:
+    src: "{{ role_path }}/files/dashboards/node-exporter-full.json"
+    dest: /tmp/node-exporter-full.json
+
+- name: Import Node Exporter Full dashboard
+  community.grafana.grafana_dashboard:
+    grafana_url: "http://localhost:{{ grafana_port }}"
+    grafana_user: "{{ grafana_user }}"
+    grafana_password: "{{ grafana_password }}"
+    state: present
+    path: "/tmp/node-exporter-full.json"
+  tags: grafana-config
+
