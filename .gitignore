@@ -1,0 +1,36 @@
+# Vagrant
+.vagrant/
+
+# Python
+*.pyc
+__pycache__/
+
+# Ansible
+*.retry
+ansible/inventories/hosts.ini.local
+
+# Vault files
+ansible/roles/**/vars/vault.yml
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.iml
+
+# Node Exporter / Prometheus / Grafana tarballs
+/tmp/*.tar.gz
+
+# Vagrant synced folders (if any)
+**/tmp/*
