@@ -3,7 +3,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "target" do |target|
     target.vm.box = "ubuntu/focal64"
     target.vm.hostname = "target"
-    target.vm.network "private_network", ip: "192.168.56.10"
+    target.vm.network "private_network", ip: "xxx.xxx.xxx.xxx"
     target.vm.provider "virtualbox" do |vb|
       vb.memory = 1024
       vb.cpus = 1
@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "monitoring" do |monitoring|
     monitoring.vm.box = "ubuntu/focal64"
     monitoring.vm.hostname = "monitoring"
-    monitoring.vm.network "private_network", ip: "192.168.56.20"
+    monitoring.vm.network "private_network", ip: "xxx.xxx.xxx.xxx"
     monitoring.vm.provider "virtualbox" do |vb|
       vb.memory = 2048
       vb.cpus = 2

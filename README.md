@@ -86,6 +86,20 @@ This project is for educational purposes only. It helps to practice DevOps tools
 * Prometheus / Grafana / Alertmanager
 * Node Exporter
 
+## Screenshots
+
+### 1. Prometheus Dashboard
+![Prometheus Dashboard](screenshots/1.png)
+
+### 2. Grafana Dashboard Overview
+![Grafana Dashboard](screenshots/2.png)
+
+### 3. Alertmanager Alerts
+![Alertmanager Alerts](screenshots/3.png)
+
+### 4. Stress Test Running in VSCode
+![Stress Test](screenshots/4.png)
+
 ## Let's Connect
 
 I’m currently seeking DevOps opportunities in London, UK 🇬🇧.
