@@ -4,6 +4,22 @@ This project was created for learning purposes, to reinforce knowledge of Promet
 
 It is a demonstration project and not intended for production use.
 
+---
+
+## Tech Stack
+
+| Tool              | Purpose                                      |
+|-------------------|----------------------------------------------|
+| **Prometheus**    | Collects and stores metrics                  |
+| **Grafana**       | Visualizes metrics with dashboards           |
+| **Alertmanager**  | Handles alerts and sends notifications (Slack) |
+| **Node Exporter** | Exposes system metrics from the target VM    |
+| **Ansible**       | Automates provisioning and configuration     |
+| **Vagrant**       | Creates isolated virtual machines for the lab |
+| **Slack**         | Notification channel for alerts              |
+
+---
+
 ## Project Structure
 
 ```
