@@ -100,9 +100,20 @@ This project is for educational purposes only. It helps to practice DevOps tools
 ### 4. Example alert notification in Slack
 ![Slack Alert](screenshots/4.png)
 
+## Next Steps
+
+This lab can be further extended by integrating additional observability tools:
+
+- **Loki** – for log aggregation within Grafana  
+- **Tempo** – for distributed tracing support  
+- **Alert refinements** – add more complex rules and notification channels  
+- **Dashboards** – extend Grafana dashboards for more detailed visualization  
+
+These improvements would turn the stack into a more complete monitoring and observability solution, closer to real-world production setups.
+
 ## Let's Connect
 
 I’m currently seeking DevOps opportunities in London, UK 🇬🇧.
 Feel free to reach out or leave feedback!
 
-[LinkedIn](https://www.linkedin.com/in/andriy-smyk-b5446311b)
+[LinkedIn](https://www.linkedin.com/in/andriysmyk)
